@@ -1,9 +1,15 @@
 import "./ExpenseDate.css";
 
+function checkDate(date) {
+  if(!date) return new Date(2021, 9, 29);
+  return date;
+};
+
 function ExpenseDate(props) {
-  const month = props.date.toLocaleString("en-US", { month: "long" });
-  const day = props.date.toLocaleString("en-US", { day: "2-digit" });
-  const year = props.date.getFullYear();
+  const checkedDate = checkDate(props.date);
+  const month = checkedDate.toLocaleString("en-US", { month: "long" });
+  const day = checkedDate.toLocaleString("en-US", { day: "2-digit" });
+  const year = checkedDate.getFullYear();
 
   return (
     <div className="expense-date">
