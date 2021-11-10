@@ -3,21 +3,46 @@ import "./ExpenseForm.css";
 
 const ExpenseForm = () => {
   // set initial state as "" for the form
-  const [enteredTitle, setEnteredTitle] = useState("");
-  const [enteredAmount, amountChangeHandler] = useState("");
-  const [enteredDate, dateChangeHandler] = useState("");
+  // const [enteredTitle, setEnteredTitle] = useState("");
+  // const [enteredAmount, amountChangeHandler] = useState("");
+  // const [enteredDate, dateChangeHandler] = useState("");
+
+  // or, use single state to manage the whole input form
+  const [userInput, setUserInput] = useState({
+    enteredTitle: "",
+    enteredAmount: "",
+    enteredDate: "",
+  });
 
   // store user input
   const titleChangeHandler = (event) => {
-    setEnteredTitle(event.target.value);
+    // setEnteredTitle(event.target.value);
+    setUserInput((prevState) => {
+      return {
+        ...prevState,
+        enteredTitle: event.target.value,
+      };
+    });
   };
 
   const amountChangeHandler = (event) => {
-    setEnteredAmount(event.target.value);
+    // setEnteredAmount(event.target.value);
+    setUserInput((prevState) => {
+      return {
+        ...prevState,
+        enteredAmount: event.target.value,
+      };
+    });
   };
 
   const dateChangeHandler = (event) => {
-    setEnteredDate(event.target.value);
+    // setEnteredDate(event.target.value);
+    setUserInput((prevState) => {
+      return {
+        ...prevState,
+        enteredDate: event.target.value,
+      };
+    });
   };
 
   return (
