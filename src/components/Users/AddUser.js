@@ -14,16 +14,16 @@ const AddUser = (props) => {
     // check for empty input
     if (enteredUsername.trim().length === 0 || enteredAge.trim().length === 0) {
       setError({
-        title: 'Invalid input (empty values)',
-        message: 'Both the username and the age are required!'
+        title: "Invalid input (empty values)",
+        message: "Both username and age are required!",
       });
       return;
     }
     // check if it is a valid age (a positive number!)
     if (+enteredAge < 1) {
       setError({
-        title: 'Invalid age',
-        message: 'Age should be a positive number (>= 1)'
+        title: "Invalid age",
+        message: "Age should be a positive number (>= 1)",
       });
       return;
     }
@@ -42,10 +42,20 @@ const AddUser = (props) => {
   const ageChangeHandler = (event) => {
     setEnteredAge(event.target.value);
   };
+  // remove error modal
+  const errorHandler = () => {
+    setError(null);
+  };
 
   return (
     <div>
-      {error && <ErrorModal title={error.title} message={error.message} />}
+      {error && (
+        <ErrorModal
+          title={error.title}
+          message={error.message}
+          onConfirm={errorHandler}
+        />
+      )}
       <Card className={styles.input}>
         <form onSubmit={addUserHandler}>
           <label htmlFor="username">Username</label>
