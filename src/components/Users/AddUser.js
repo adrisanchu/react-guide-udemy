@@ -19,6 +19,7 @@ const AddUser = (props) => {
     }
     // validation ok...
     console.log(`User ${enteredUsername} added! Age: ${enteredAge}`);
+    props.onAddUser(enteredUsername, enteredAge);
     // reset form
     setEnteredUsername("");
     setEnteredAge("");
