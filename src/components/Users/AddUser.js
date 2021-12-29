@@ -9,6 +9,15 @@ const AddUser = (props) => {
 
   const addUserHandler = (event) => {
     event.preventDefault();
+    // check for empty input
+    if (enteredUsername.trim().length === 0 || enteredAge.trim().length === 0) {
+      return;
+    }
+    // check if it is a valid age (a positive number!)
+    if (+enteredAge < 1) {
+      return;
+    }
+    // validation ok...
     console.log(`User ${enteredUsername} added! Age: ${enteredAge}`);
     // reset form
     setEnteredUsername("");
